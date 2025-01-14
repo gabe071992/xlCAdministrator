@@ -1,0 +1,293 @@
+
+XLC API Endpoints [Access Requirements]
+=====================================
+
+Authentication
+-------------
+POST /api/v1/auth/login
+- Login user with email and password
+- Public access
+- Returns JWT token
+
+Admin Operations
+---------------
+GET /api/v1/admin/contract-templates
+- List contract templates
+- Requires authentication
+- Requires admin role
+- Rate limited: 10 req/min
+
+PUT /api/v1/admin/contract-templates/:type
+- Update contract template
+- Requires authentication
+- Requires admin role
+- Rate limited: 10 req/min
+
+POST /api/v1/admin/contract-templates/:type/deploy
+- Deploy contract from template
+- Requires authentication
+- Requires admin role
+- Rate limited: 10 req/min
+
+POST /api/v1/admin/registry/deploy
+- Deploy registry contract
+- Requires authentication
+- Requires admin role
+- Rate limited: 10 req/min
+
+API Keys
+--------
+POST /api/v1/api-keys
+- Generate new API key
+- Requires authentication
+- Rate limited: 10 req/min
+
+GET /api/v1/api-keys
+- List all API keys
+- Requires authentication
+- Rate limited: 10 req/min
+
+DELETE /api/v1/api-keys/{keyId}
+- Revoke specific API key
+- Requires authentication
+- Rate limited: 10 req/min
+
+GET /api/v1/api-keys/{keyId}/analytics
+- Get API key usage analytics
+- Requires authentication
+- Rate limited: 30 req/min
+
+PUT /api/v1/api-keys/{keyId}/quota
+- Update API key quota
+- Requires authentication
+- Rate limited: 10 req/min
+
+Team Management
+---------------
+POST /api/v1/team/{accountId}/invite
+- Invite team member
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/team/invite/{inviteId}/accept
+- Accept team invitation
+- Requires authentication
+- Rate limited: 30 req/min
+
+DELETE /api/v1/team/{accountId}/members/{userId}
+- Remove team member
+- Requires authentication
+- Rate limited: 30 req/min
+
+PUT /api/v1/team/{accountId}/members/{userId}
+- Update team member
+- Requires authentication
+- Rate limited: 30 req/min
+
+Transaction Operations
+---------------------
+POST /api/v1/transactions/{txHash}/cancel
+- Cancel pending transaction
+- Requires authentication
+- Rate limited: 60 req/min
+
+POST /api/v1/transactions/{txHash}/speed-up
+- Speed up pending transaction
+- Requires authentication
+- Rate limited: 60 req/min
+
+GET /api/v1/transactions/{txHash}/receipt
+- Get transaction receipt
+- Requires authentication
+- Rate limited: 60 req/min
+
+Wallet Operations
+----------------
+POST /api/v1/wallets
+- Create new wallet
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/wallets/import
+- Import existing wallet
+- Requires authentication
+- Rate limited: 30 req/min
+
+GET /api/v1/wallets/{address}
+- Get wallet balance
+- Requires authentication
+- Rate limited: 30 req/min
+
+GET /api/v1/wallets/{address}/transactions
+- Get transaction history
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/wallets/{address}/transfer
+- Transfer tokens
+- Requires authentication
+- Rate limited: 30 req/min
+
+Staking Operations
+-----------------
+GET /api/v1/staking/pools
+- List all staking pools
+- Requires authentication
+- Rate limited: 20 req/min
+
+POST /api/v1/staking/stakes
+- Create new stake
+- Requires authentication
+- Rate limited: 20 req/min
+
+GET /api/v1/staking/stakes/{stakeId}
+- Get stake information
+- Requires authentication
+- Rate limited: 20 req/min
+
+Cross-chain Operations
+--------------------
+POST /api/v1/transactions/cross-chain/initiate
+- Initiate cross-chain transaction
+- Requires authentication
+- Rate limited: 60 req/min
+
+GET /api/v1/transactions/cross-chain/{txHash}/status
+- Get cross-chain transaction status
+- Requires authentication
+- Rate limited: 60 req/min
+
+Batch Operations
+--------------
+POST /api/v1/transactions/batch
+- Create batch transaction
+- Requires authentication
+- Rate limited: 60 req/min
+
+GET /api/v1/transactions/batch/{batchId}
+- Get batch status
+- Requires authentication
+- Rate limited: 60 req/min
+
+Smart Contract Operations
+-----------------------
+POST /api/v1/contract/deploy
+- Deploy smart contract
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/contract/{address}/call
+- Call contract method
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/contract/{address}/write
+- Write to contract
+- Requires authentication
+- Rate limited: 30 req/min
+
+GET /api/v1/contract/{address}/events
+- Get contract events
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/contract/verify
+- Verify contract
+- Requires authentication
+- Rate limited: 30 req/min
+
+GET /api/v1/contract/{address}/analytics
+- Get contract analytics
+- Requires authentication
+- Rate limited: 30 req/min
+
+POST /api/v1/contract/{address}/upgrade
+- Upgrade contract
+- Requires authentication
+- Rate limited: 30 req/min
+
+GET /api/v1/contract/{address}/security
+- Get contract security status
+- Requires authentication
+- Rate limited: 30 req/min
+
+Liquidity Operations
+------------------
+GET /api/v1/liquidity/pools
+- Get all liquidity pools
+- Requires authentication
+- Rate limited: 20 req/min
+
+POST /api/v1/liquidity/positions
+- Add liquidity position
+- Requires authentication
+- Rate limited: 20 req/min
+
+DELETE /api/v1/liquidity/positions/{positionId}
+- Remove liquidity position
+- Requires authentication
+- Rate limited: 20 req/min
+
+GET /api/v1/liquidity/positions
+- Get user positions
+- Requires authentication
+- Rate limited: 20 req/min
+
+Business Account Operations
+-------------------------
+GET /api/v1/business/{accountId}
+- Get business account details
+- Requires authentication
+- Rate limited: 100 req/min
+
+PUT /api/v1/business/{accountId}
+- Update business account
+- Requires authentication
+- Rate limited: 100 req/min
+
+POST /api/v1/business/{accountId}/team
+- Add team member
+- Requires authentication
+- Rate limited: 100 req/min
+
+GET /api/v1/business/{accountId}/usage
+- Get usage metrics
+- Requires authentication
+- Rate limited: 100 req/min
+
+Billing Operations
+----------------
+GET /api/v1/business/{accountId}/billing
+- Get billing details
+- Requires authentication
+- Rate limited: 100 req/min
+
+PUT /api/v1/business/{accountId}/billing/payment-method
+- Update payment method
+- Requires authentication
+- Rate limited: 100 req/min
+
+GET /api/v1/business/{accountId}/billing/invoices
+- Get invoices
+- Requires authentication
+- Rate limited: 100 req/min
+
+POST /api/v1/business/{accountId}/billing/invoices
+- Generate invoice
+- Requires authentication
+- Rate limited: 100 req/min
+
+Rate Limiting Headers
+-------------------
+All endpoints return the following headers:
+- X-RateLimit-Limit: Max requests allowed
+- X-RateLimit-Remaining: Requests remaining
+- X-RateLimit-Reset: Time until reset
+
+Authentication Methods
+--------------------
+1. Bearer Token Authentication
+   Header: Authorization: Bearer <jwt_token>
+
+2. API Key Authentication
+   Header: X-API-Key: <api_key>

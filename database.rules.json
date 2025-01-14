@@ -1,0 +1,93 @@
+{
+  "rules": {
+    "users": {
+      ".read": "true",
+      "$userId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "peerId": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "wallet": {
+          ".read": "true",
+          ".write": "auth != null && auth.uid === $userId",
+          "balance": {
+            ".read": "true",
+            ".write": "auth != null && auth.uid === $userId"
+          }
+        }
+      }
+    },
+    "wallets": {
+      "$userId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      },
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "messageLogs": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "adminData": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "link-fed": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "transactions": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "xlc": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "tokenomics": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "offers": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "stakingPools": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+    },
+    "userStakes": {
+      ".read": "auth != null",
+      "$userId": {
+        ".read": "auth != null && auth.uid === $userId",
+        ".write": "auth != null && auth.uid === $userId"
+      }
+    },
+    "rewards": {
+      ".read": "auth != null",
+      "$userId": {
+        ".read": "auth != null && auth.uid === $userId",
+        ".write": "auth != null && auth.uid === $userId"
+      }
+    },
+    "ratesAndWeights": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')",
+      "metrics": {
+        ".read": true,
+        ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+      },
+      "weights": {
+        ".read": true,
+        ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+      },
+      "baselineRate": {
+        ".read": true,
+        ".write": "auth != null && (auth.uid === 'Admin_UID_1' || auth.uid === 'Mj03qpcX9XPQDn9AlUzJPX3J7562' || auth.uid === 'Placeholder_for_second_admin_UID')"
+      }
+    }
+  }
+}
